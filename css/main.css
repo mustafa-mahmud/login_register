@@ -1,0 +1,31 @@
+* {
+	argin: 0;
+	adding: 0;
+	webkit-box-sizing: border-box;
+	g: border-box;
+}
+
+body {
+	ackground-color: #007BFF;
+	in-height: 100vh;
+}
+
+/* =========== Register============= */
+.middle-border {
+	isplay: -webkit-box;
+	isplay: -ms-flexbox;
+	isplay: flex;
+	webkit-box-align: center;
+	lex-align: center;
+	ms: center;
+	argin: 0;
+	adding: 0;
+}
+
+.middle-border span {
+	webkit-box-flex: 1;
+	lex: 1;
+	
+	eight: 3px;
+	ackground-color: #fff;
+}
