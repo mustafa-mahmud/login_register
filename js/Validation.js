@@ -1,4 +1,5 @@
 import Helper from './Helper.js';
+import Storage from './Storage.js';
 
 class Validation {
   nameInput = document.getElementById('name');
@@ -38,6 +39,7 @@ class Validation {
       this.lengthCk('name', this.userData[0].name, 4);
       this.lengthCk('password', this.userData[0].password, 5);
       this.passwordMatch();
+      this.emailExist('email', this.userData[0].email);
     }
   }
 
@@ -52,6 +54,14 @@ class Validation {
     } else {
       Helper.removeError('confirm_password');
     }
+  }
+
+  emailExist(key, email) {
+    const allUserData = Storage.getData();
+
+    const bool = allUserData.findIndex((obj) => obj.email === email);
+    if (bool !== -1) Helper.showError(key, `"${email}" already exists`);
+    else Helper.removeError(key);
   }
 
   isValid() {
