@@ -22,7 +22,7 @@ function login(e) {
 
   if (Validation.isValid()) {
     const users = Storage.getData();
-    const user = users.find(
+    const user = users?.find(
       (user) => user.email === data.email && user.password === data.password
     );
 
