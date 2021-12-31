@@ -48,7 +48,7 @@ class Validation {
   emailExist(key, email) {
     const allUserData = Storage.getData();
 
-    const bool = allUserData.findIndex((obj) => obj.email === email);
+    const bool = allUserData?.findIndex((obj) => obj.email === email);
     if (bool !== -1) Helper.showError(key, `"${email}" already exists`);
     else Helper.removeError(key);
   }
