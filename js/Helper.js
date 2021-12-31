@@ -17,14 +17,17 @@ class Helper {
     parent.querySelector('.invalid-feedback').classList.remove('d-block');
   }
 
-  static showSuccess(el) {
-    el.classList.add('visible');
-    el.classList.remove('invisible');
+  static showMsg(el, msg, className) {
+    el.innerHTML = `
+		<div class="alert visible alert-${className}" role="alert">
+			${msg} 
+		</div>`;
   }
 
-  static removeSuccess(el) {
-    el.classList.remove('visible');
-    el.classList.add('invisible');
+  static removeMsg(el) {
+    el.innerHTML = `
+		<div class="alert invisible " role="alert">
+		</div>`;
   }
 
   static redirect(link) {
@@ -42,6 +45,10 @@ class Helper {
   static blankInputs(form) {
     const inputs = form.querySelectorAll('input');
     inputs.forEach((input) => (input.value = ''));
+  }
+
+  static deleteLogin() {
+    localStorage.removeItem('login');
   }
 }
 

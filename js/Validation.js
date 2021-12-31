@@ -2,11 +2,6 @@ import Helper from './Helper.js';
 import Storage from './Storage.js';
 
 class Validation {
-  nameInput = document.getElementById('name');
-  emailInput = document.getElementById('email');
-  passwordInput = document.getElementById('password');
-  confirm_passwordInput = document.getElementById('confirm_password');
-  check_boxInput = document.getElementById('check_box');
   allInvalid = [...document.querySelectorAll('.invalid-feedback')];
 
   constructor() {
@@ -14,16 +9,8 @@ class Validation {
     this.userData = [];
   }
 
-  emptyCk() {
-    this.userData = [
-      {
-        name: this.nameInput.value,
-        email: this.emailInput.value,
-        password: this.passwordInput.value,
-        confirm_password: this.confirm_passwordInput.value,
-        check_box: this.check_boxInput.checked,
-      },
-    ];
+  emptyCk(data, check) {
+    this.userData = [data];
 
     const bool = Object.values(this.userData[0]).every((val) => val);
 
@@ -36,10 +23,12 @@ class Validation {
       const keys = Object.keys(this.userData[0]);
       keys.forEach((key) => Helper.removeError(key));
 
-      this.lengthCk('name', this.userData[0].name, 4);
-      this.lengthCk('password', this.userData[0].password, 5);
-      this.passwordMatch();
-      this.emailExist('email', this.userData[0].email);
+      if (check === 'reg') {
+        this.lengthCk('name', this.userData[0].name, 4);
+        this.lengthCk('password', this.userData[0].password, 5);
+        this.passwordMatch();
+        this.emailExist('email', this.userData[0].email);
+      }
     }
   }
 

@@ -11,9 +11,12 @@
 		<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 		<link rel="stylesheet" href="css/main.css" />
 
-		<script type="module">
-			// import { redirect } from "./js/helper.js";
-			// redirect('login.html');
+		<script>
+			const ckUser = localStorage.getItem('login') ?
+				localStorage.getItem('login') :
+				undefined;
+
+			if (!ckUser) window.location = 'login.html';
 		</script>
 	</head>
 
@@ -37,7 +40,7 @@
 
 					<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link" href="#">Logout</a>
+							<a class="nav-link" href="#" id="logout">Logout</a>
 						</li>
 					</ul>
 
@@ -47,9 +50,11 @@
 
 		<div class="container">
 			<div class="row">
-				<h1 class="text-light text-center mt-5">Welcome Alex</h1>
+				<h1 class="text-center mt-5">Welcome <strong></strong></h1>
 			</div>
 		</div>
+
+		<script type="module" defer src="js/home.js"></script>
 	</body>
 
 </html>
