@@ -28,13 +28,20 @@ function register(e) {
   Validation.emptyCk(data, 'reg');
 
   if (Validation.isValid()) {
+    console.log(123);
     const user = {
       name: Validation.userData[0].name,
       email: Validation.userData[0].email,
       password: Validation.userData[0].password,
     };
 
-    const allUser = [...Storage.getData(), user];
+    const ckData = Storage.getData();
+    let allUser = [];
+
+    if (!ckData) allUser.push(user);
+    else allUser = [...Storage.getData(), user];
+
+    console.log(allUser);
     Storage.saveData(allUser);
     Helper.showMsg(
       msgEl,

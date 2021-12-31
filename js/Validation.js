@@ -24,6 +24,7 @@ class Validation {
       keys.forEach((key) => Helper.removeError(key));
 
       if (check === 'reg') {
+        console.log(456);
         this.lengthCk('name', this.userData[0].name, 4);
         this.lengthCk('password', this.userData[0].password, 5);
         this.passwordMatch();
@@ -46,9 +47,12 @@ class Validation {
   }
 
   emailExist(key, email) {
-    const allUserData = Storage.getData();
+    const ckData = Storage.getData() ? Storage.getData() : null;
+    console.log(ckData);
+    if (!ckData) return;
 
-    const bool = allUserData?.findIndex((obj) => obj.email === email);
+    const bool = ckData.findIndex((obj) => obj.email === email);
+    console.log(bool, email);
     if (bool !== -1) Helper.showError(key, `"${email}" already exists`);
     else Helper.removeError(key);
   }

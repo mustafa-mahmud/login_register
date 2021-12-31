@@ -2,6 +2,7 @@ class Storage {
   constructor() {}
 
   static saveData(data) {
+    console.log(data);
     localStorage.setItem('register', JSON.stringify(data));
   }
 
